@@ -13,20 +13,20 @@ _build()
 _start()
 {
   echo "start*****************************"
-  sudo docker run -d -p 9999:9999 -v /home/anderson/data/tserv:/data --name tserv-app-cnr  tserv-app-img
+  sudo docker run -d -p 9999:9999 -v /home/anderson/data/tserv:/data --name tserv-db-cnr  tserv-db-img
 }
 
 _stoprm()
 {
   echo "stoprm****************************"
-  sudo docker stop  tserv-app-cnr
-  sudo docker rm  tserv-app-cnr
+  sudo docker stop  tserv-db-cnr
+  sudo docker rm  tserv-db-cnr
 
 }
 
 _test()
 {
-  sudo docker logs tserv-app-cnr
+  sudo docker logs tserv-db-cnr
   echo "-----------------"
   response=$(curl -X GET localhost:9999/health);
   echo "-----------------"
