@@ -29,10 +29,14 @@ _test()
   sudo docker logs tserv-db-cnr
   echo "-----------------"
   response=$(curl -X GET localhost:9999/health);
+  echo "RESP:";  echo ${response}
   echo "-----------------"
-  if [ "${response}" == "APPSERV OK" ]; then echo "SUCESS!!!!!!!"; fi;
-  echo "-----------------"
+  if [ "${response}" =  "APPSERV OK" ];
+  then
+      echo "SUCESS!!!!!!!";
+  fi;
 }
+
 
 while [ "$1" != "" ]; do
     PARAM=`echo $1 | awk -F= '{print $1}'`
